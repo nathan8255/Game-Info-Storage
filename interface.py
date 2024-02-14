@@ -10,5 +10,5 @@ status = "RUNNING"
 
 #interface loop
 while status != "EXIT":
-    command = input(Fore.CYAN + "")
+    command = input(Fore.CYAN + "Enter Command: ")
     parseSelection(command)

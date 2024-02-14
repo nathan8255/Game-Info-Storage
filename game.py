@@ -5,5 +5,8 @@ class Game:
     self.achievement = achievement
     self.status = status
 
+  def __repr__(self):
+    return f"[ {self.name}, {self.tags}, {self.achievement}, {self.status} ]"
+
   def __str__(self):
-    return f"{self.name}"
+    return f"[ {self.name}, {self.tags}, {self.achievement}, {self.status} ]"
