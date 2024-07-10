@@ -10,16 +10,23 @@ class GameManager:
 
     def createGame(self):
         name = input("Enter name of game: ")
-        tag1 = input("Enter first tag: ")
-        tags = [tag1]
-        tag2 = input("Enter second tag: ")
-        tags.append(tag2)
-        tag3 = input("Enter third tag: ")
-        tags.append(tag3)
+
+        tags = []
+        while True:
+            enteredTag = input("Enter tag (\"STOP\" to stop entering tags): ")
+            if (enteredTag == "STOP"): break
+            if (enteredTag in tags):
+                print("Duplicate tag recieved! All game tags should be unique.")
+            tags.append(enteredTag)
+        if (len(tags) == 0): tags.append("None")
+
         achievement = input("Enter achievement %: ")
+        if (achievement.isdigit() == False): achievement = 0
+
         status = input("Enter completion status: ") 
         game = Game(name, tags, achievement, status)
         self.games[name] = game
+        return game
     
     def printGames(self):
         tableTheme = Theme(
@@ -31,8 +38,13 @@ class GameManager:
         table = ColorTable(theme=tableTheme)
         table.field_names = ["Name", "Tags", "Achievement", "Status"]
 
+        formatedTags = ""
         for game in self.games.values():
-            formatedTags = f"{game.tags[0]}, {game.tags[1]}, {game.tags[2]}"
-            table.add_row([game.name, formatedTags, "{game.achievement}%", game.status])
+            for tag in game.tags:
+                if (tag == game.tags[-1]):
+                    formatedTags += f"{tag}"
+                else:
+                    formatedTags += f"{tag}, "
+            table.add_row([game.name, formatedTags, f"{game.achievement}%", game.status])
 
         print(table)

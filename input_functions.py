@@ -1,4 +1,5 @@
 from game_manager import GameManager
+from database_functions import *
 from colorama import just_fix_windows_console, Fore
 import os
 
@@ -13,7 +14,8 @@ def displayHelpInfo():
 def parseSelection(command):
     os.system('cls')
     if (command == "NEW"):
-        manager.createGame()
+        game = manager.createGame()
+        addGame(game)
     elif(command == "DISPLAY"):
         print(Fore.RESET)
         manager.printGames()
