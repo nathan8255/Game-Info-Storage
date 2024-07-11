@@ -1,13 +1,7 @@
 class Game:
-  def __init__(self, name, tags, achievement, status):
+  def __init__(self, name, achievement, status, tags=["None"]):
     self.name = name
     self.tags = tags
-    self.achievement = achievement
-    self.status = status
-
-  def __init__(self, name, achievement, status):
-    self.name = name
-    self.tags = []
     self.achievement = achievement
     self.status = status
 

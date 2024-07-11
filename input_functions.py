@@ -25,3 +25,6 @@ def parseSelection(command):
     else:
         print("[Input was invalid, displaying \"HELP\" info.]\n")
         displayHelpInfo()
+
+def setupManager():
+    manager.initalizeGames()

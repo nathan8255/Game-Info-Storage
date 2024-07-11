@@ -1,13 +1,10 @@
-from game_manager import GameManager
 from input_functions import *
 from database_functions import *
 from colorama import just_fix_windows_console, Fore
 
-manager = GameManager()
-
 #initial database setup
 setupDatabase()
-manager.initalizeGames()
+setupManager()
 
 #initial interface setup
 print(Fore.BLUE + "Game Manager")

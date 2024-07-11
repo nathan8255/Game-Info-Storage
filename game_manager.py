@@ -8,6 +8,11 @@ class GameManager:
         self.games = {
             #game id : game object
         }
+    
+    def initalizeGames(self):
+        for id in getGames():
+            self.games[id] = getGameInfo(id)
+            self.games[id].tags = getTags(id)
 
     def createGame(self):
         name = input("Enter name of game: ")
@@ -17,7 +22,7 @@ class GameManager:
 
         tags = []
         status = input("Enter completion status: ") 
-        game = Game(name, tags, achievement, status)
+        game = Game(name, achievement, status, tags)
 
         id = addGame(game)
         self.games[id] = game
@@ -56,8 +61,3 @@ class GameManager:
             table.add_row([game.name, formatedTags, f"{game.achievement}%", game.status])
 
         print(table)
-
-    def initalizeGames(self):
-        for id in getGames():
-            self.games[id] = getGameInfo(id)
-            self.games[id].tags = getTags(id)
