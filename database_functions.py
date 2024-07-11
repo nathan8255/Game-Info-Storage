@@ -33,6 +33,13 @@ def addGame(game):
 
     return dbCursor.lastrowid
 
+def updateGame(id, game):
+    sql = f"UPDATE {GamesTable} SET name = %s, achievement = %s, status = %s WHERE id={id}"
+    values = (game.name, game.achievement, game.status)
+    dbCursor.execute(sql, values)
+
+    gameDB.commit()
+
 def addTag(id, tag):
     dbCursor.execute(f"SELECT EXISTS(SELECT * FROM {TagsTable} WHERE tag=\"{tag}\")")
     existCheck = dbCursor.fetchall()

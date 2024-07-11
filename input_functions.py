@@ -6,22 +6,31 @@ manager = GameManager()
 
 def displayHelpInfo():
     print("--> NEW\nAdd a new game to track.\n")
+    print("--> EDIT\nModify information for a tracked game.\n")
     print("--> DISPLAY\nDisplays all added games.\n")
     print("--> HELP\nDisplayes help info.\n")
-    print("--> EXIT\nExit game manager.\n")
+    print("--> HELP\nChange program settings.\n")
+    print("--> EXIT\nExit game manager.")
 
 def parseSelection(command):
     os.system('cls')
     if (command == "NEW"):
         manager.createGame()
+    elif(command == "EDIT"):
+        print(Fore.RESET)
+        manager.printAllGames()
+        print(Fore.CYAN)
+        manager.editGame()
     elif(command == "DISPLAY"):
         print(Fore.RESET)
-        manager.printGames()
+        manager.printAllGames()
         print(Fore.CYAN)
-    elif (command == "EXIT"):
-        print()
     elif (command == "HELP"):
         displayHelpInfo()
+    elif (command == "SETTINGS"):
+        print()
+    elif (command == "EXIT"):
+        exit()
     else:
         print("[Input was invalid, displaying \"HELP\" info.]\n")
         displayHelpInfo()
