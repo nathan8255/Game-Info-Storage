@@ -7,6 +7,7 @@ manager = GameManager()
 
 #initial database setup
 setupDatabase()
+manager.initalizeGames()
 
 #initial interface setup
 print(Fore.BLUE + "Game Manager")
